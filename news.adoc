@@ -394,6 +394,4 @@ create _5575-[:HAS_SAME_TOKEN {token:"frança"}]->_6872
 MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) RETURN r1
 ----
 
-//table
-
 //graph_result
