@@ -411,15 +411,15 @@ RETURN *
 == Finding news with words in common
 
 The query below displays news with the word 'polícia' (police in Portuguese). News have already been
-aggregated per day when the data was first collected.
+aggregated per day when the data was first collected. As the result would be too large, we are also filtering by the web site 'SBT', so that it is easier to visualize the results.
 
 [source,cypher]
 ----
-MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) WHERE r1.token = 'polícia' RETURN *
+MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) WHERE r1.token = 'polícia' AND n1.journal = 'sbt' RETURN *
 ----
 //graph
 
-The same result as a table
+The same result as a table but with all the web sites included.
 
 [source,cypher]
 ----
