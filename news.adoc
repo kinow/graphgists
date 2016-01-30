@@ -26,7 +26,7 @@ The following is used to create the nodes with attributes.
 //setup
 [source,cypher]
 ----
-create index on :'News'('url')
+CREATE INDEX ON :News(url)
 create (_917:'News' {'date':"2015-01-09 00:00:00", 'journal':"r7", 'title':"Assista à íntegra do Jornal da Record desta sexta-feira (9)", 'url':"http://noticias.r7.com/jornal-da-record/videos/assista-a-integra-do-jornal-da-record-desta-sexta-feira-9-09012015"})
 create (_918:'News' {'date':"2015-01-09 00:00:00", 'journal':"r7", 'title':"Eletropaulo tem prazo de dez dias para melhorar atendimento aos consumidores", 'url':"http://noticias.r7.com/jornal-da-record/videos/eletropaulo-tem-prazo-de-dez-dias-para-melhorar-atendimento-aos-consumidores-09012015"})
 create (_919:'News' {'date':"2015-01-09 00:00:00", 'journal':"r7", 'title':"Polícia mata dois terroristas suspeitos de atentado à revista em Paris", 'url':"http://noticias.r7.com/jornal-da-record/videos/policia-mata-dois-terroristas-suspeitos-de-atentado-a-revista-em-paris-13042015"})
