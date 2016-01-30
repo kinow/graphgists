@@ -2,6 +2,9 @@
 :neo4j-version: 2.3.2
 :author: Bruno P. Kinoshita
 :twitter: @kinow
+:domain: investigative-journalism
+:use-case: investigative-journalism
+:tag: 
 
 :toc:
 
@@ -26,6 +29,7 @@ The following is used to create the nodes with attributes.
 //setup
 [source,cypher]
 ----
+// Create nodes with news
 create (_917:News {date:"2015-01-09 00:00:00", journal:"r7", title:"Assista à íntegra do Jornal da Record desta sexta-feira (9)", url:"http://noticias.r7.com/jornal-da-record/videos/assista-a-integra-do-jornal-da-record-desta-sexta-feira-9-09012015"})
 create (_918:News {date:"2015-01-09 00:00:00", journal:"r7", title:"Eletropaulo tem prazo de dez dias para melhorar atendimento aos consumidores", url:"http://noticias.r7.com/jornal-da-record/videos/eletropaulo-tem-prazo-de-dez-dias-para-melhorar-atendimento-aos-consumidores-09012015"})
 create (_919:News {date:"2015-01-09 00:00:00", journal:"r7", title:"Polícia mata dois terroristas suspeitos de atentado à revista em Paris", url:"http://noticias.r7.com/jornal-da-record/videos/policia-mata-dois-terroristas-suspeitos-de-atentado-a-revista-em-paris-13042015"})
@@ -84,6 +88,8 @@ create (_5572:News {date:"2015-01-09 00:00:00", journal:"jn", title:"Equipe do C
 create (_5573:News {date:"2015-01-09 00:00:00", journal:"jn", title:"Sequestrador e quatro reféns são mortos em cerco policial na França", url:"http://g1.globo.com/jornal-nacional/noticia/2015/01/sequestrador-e-quatro-refens-sao-mortos-em-cerco-policial-na-franca.html"})
 create (_5574:News {date:"2015-01-09 00:00:00", journal:"jn", title:"Terrorista afirma que ataque a jornal francês foi financiado pela Al-Qaeda", url:"http://g1.globo.com/jornal-nacional/noticia/2015/01/terrorista-afirma-que-ataque-jornal-frances-foi-financiado-pela-al-qaeda.html"})
 create (_5575:News {date:"2015-01-09 00:00:00", journal:"jn", title:"Polícia mata irmãos terroristas Kouachi após caçada na França", url:"http://g1.globo.com/jornal-nacional/noticia/2015/01/policia-mata-irmaos-terroristas-kouachi-apos-cacada-na-franca.html"})
+
+// Create edges with common tokens between news
 create _917-[:HAS_SAME_TOKEN {token:"jornal"}]->_5562
 create _917-[:HAS_SAME_TOKEN {token:"jornal"}]->_5574
 create _918-[:HAS_SAME_TOKEN {token:"tem"}]->_6866
@@ -385,7 +391,10 @@ create _5575-[:HAS_SAME_TOKEN {token:"frança"}]->_6879
 create _5575-[:HAS_SAME_TOKEN {token:"polícia"}]->_6878
 create _5575-[:HAS_SAME_TOKEN {token:"terroristas"}]->_6867
 create _5575-[:HAS_SAME_TOKEN {token:"frança"}]->_6872
+
+RETURN *
 ----
+//graph
 
 == Finding news with words in common
 
@@ -393,5 +402,7 @@ create _5575-[:HAS_SAME_TOKEN {token:"frança"}]->_6872
 ----
 MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) RETURN r1
 ----
+//output
+//graph
 
-//graph_result
+//console
