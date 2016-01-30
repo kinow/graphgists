@@ -87,7 +87,6 @@ create (_5573:`News` {`date`:"2015-01-09 00:00:00", `journal`:"jn", `title`:"Seq
 create (_5574:`News` {`date`:"2015-01-09 00:00:00", `journal`:"jn", `title`:"Terrorista afirma que ataque a jornal francês foi financiado pela Al-Qaeda", `url`:"http://g1.globo.com/jornal-nacional/noticia/2015/01/terrorista-afirma-que-ataque-jornal-frances-foi-financiado-pela-al-qaeda.html"});
 create (_5575:`News` {`date`:"2015-01-09 00:00:00", `journal`:"jn", `title`:"Polícia mata irmãos terroristas Kouachi após caçada na França", `url`:"http://g1.globo.com/jornal-nacional/noticia/2015/01/policia-mata-irmaos-terroristas-kouachi-apos-cacada-na-franca.html"});
 ----
-//graph
 
 '''
 
@@ -400,7 +399,6 @@ create _5575-[:`HAS_SAME_TOKEN` {`token`:"polícia"}]->_6878;
 create _5575-[:`HAS_SAME_TOKEN` {`token`:"terroristas"}]->_6867;
 create _5575-[:`HAS_SAME_TOKEN` {`token`:"frança"}]->_6872;
 ----
-//graph
 
 '''
 
@@ -410,4 +408,5 @@ create _5575-[:`HAS_SAME_TOKEN` {`token`:"frança"}]->_6872;
 ----
 MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) RETURN r1;
 ----
-//graph_result
+
+//graph
