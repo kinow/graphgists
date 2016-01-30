@@ -406,7 +406,7 @@ CREATE _5575-[:HAS_SAME_TOKEN {token:"frança"}]->_6872
 
 RETURN *
 ----
-//graph
+//output
 
 == Finding news with words in common
 
