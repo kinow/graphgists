@@ -6,7 +6,7 @@
 :use-case: investigative-journalism
 :tag: 
 
-A graph showing news from Brazilian web sites that have words in common, aggregated by day.
+A graph showing news from Brazilian web sites that have words in common.
 
 :toc:
 
@@ -20,8 +20,6 @@ The next step will be to apply Natural Language Processing techniques such as st
 
 == The Project
 
-The dataset in this graphgist contains only data for a single day, 2015-01-09. The complete dataset can be found in https://github.com/kinow/crawlers-noticias. It contains 7398 news/nodes, and 22998 edges.
-
 .Table Basic structure
 |===
 |News |HAS_SAME_TOKEN |News 
@@ -33,9 +31,7 @@ The dataset in this graphgist contains only data for a single day, 2015-01-09. T
 
 The graph has a single relationship between nodes called *HAS_SAME_TOKEN*, that contains a token attribute, which is the word in common between the two news.
 
-The following image describes the pipeline used to create the graph.
-
-The crawlers collected news from the following web sites.
+Crawlers written in Python with scrapy collected news from the following web sites, saving them as JSON files.
 
 * http://noticias.band.uol.com.br/jornaldaband
 * http://oglobo.globo.com/eu-reporter
@@ -46,16 +42,13 @@ The crawlers collected news from the following web sites.
 * http://g1.globo.com/
 * http://vcreporter.terra.com.br/
 
-For the period between 2014-01-01 and 2015-02-28. News were aggregated by day and a list of stop words
-was used to filter undesired words from the analysis (e.g. é, são, ser, algum).
+For the period between 2014-01-01 and 2015-02-28. A list of stop words was used to filter undesired words from the analysis (e.g. é, são, ser, algum).
 
-The data was then indexed with Lucene. The Lucene index was queried and the results stored as CSV.
+The data was then indexed with Lucene. The Lucene index was queried and the results stored as CSV. Finally, the CSV files were loaded into the Neo4J graph.
 
-Finally, the CSV are loaded into the Neo4J graph.
+== Creating database
 
-== Nodes and attributes
-
-The following is used to create the nodes with attributes.
+The dataset in this graphgist contains data for only a single day, 2015-01-09. The complete dataset can be found in https://github.com/kinow/crawlers-noticias, with 7398 news/nodes and 22998 edges.
 
 //hide
 //setup
@@ -449,4 +442,4 @@ MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) WHERE r1.token = 'polícia' RETUR
 
 Neo4J was the perfect technology for quickly modeling the data collected by the crawlers, and to display
 it on a web interface. Initial tests with a relational database showed that it would require a complex
-model and tuning in order to serve the data.
+model and further tuning in order to serve the data.
