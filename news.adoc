@@ -20,6 +20,8 @@ The next step will be to apply Natural Language Processing techniques such as st
 
 == The Project
 
+The dataset in this graphgist contains only data for a single day, 2015-01-09. The complete dataset can be found in https://github.com/kinow/crawlers-noticias. It contains 7398 news/nodes, and 22998 edges.
+
 .Table Basic structure
 |===
 |News |HAS_SAME_TOKEN |News 
