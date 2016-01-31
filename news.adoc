@@ -33,6 +33,24 @@ The graph has a single relationship between nodes called *HAS_SAME_TOKEN*, that 
 
 The following image describes the pipeline used to create the graph.
 
+The crawlers collected news from the following web sites.
+
+* http://noticias.band.uol.com.br/jornaldaband
+* http://oglobo.globo.com/eu-reporter
+* http://g1.globo.com/jornal-nacional
+* http://noticias.band.uol.com.br/jornaldaband/
+* http://noticias.r7.com/jornal-da-record/
+* http://www.sbt.com.br/jornalismo/
+* http://g1.globo.com/
+* http://vcreporter.terra.com.br/
+
+For the period between 2014-01-01 and 2015-02-28. News were aggregated by day and a list of stop words
+was used to filter undesired words from the analysis (e.g. é, são, ser, algum).
+
+The data was then indexed with Lucene. The Lucene index was queried and the results stored as CSV.
+
+Finally, the CSV are loaded into the Neo4J graph.
+
 == Nodes and attributes
 
 The following is used to create the nodes with attributes.
@@ -427,4 +445,6 @@ MATCH (n1:News)-[r1:HAS_SAME_TOKEN]->(n2:News) WHERE r1.token = 'polícia' RETUR
 ----
 //table
 
-//console
+Neo4J was the perfect technology for quickly modeling the data collected by the crawlers, and to display
+it on a web interface. Initial tests with a relational database showed that it would require a complex
+model and tuning in order to serve the data.
